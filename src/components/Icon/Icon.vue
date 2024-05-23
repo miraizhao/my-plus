@@ -1,11 +1,15 @@
 <template>
     <div>
-        <MyIcon/>
+      icon组件
     </div>
 </template>
 
 <script setup lang="ts">
-import MyIcon from '@/components/Icon/Icon.vue'
+defineOptions({
+    name: "MyIcon"
+})
+
+
 </script>
 
 <style scoped></style>

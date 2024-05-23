@@ -1,85 +1,52 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
 </script>
-
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
+  <h1 class="title">MyPlus 组件展示</h1>
 
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-      </nav>
-    </div>
-  </header>
-
-  <RouterView />
+  <!-- 导航栏组件 -->
+  <nav class="nav">
+    <!-- 导航到首页的链接，显示文字为"Icon" -->
+    <RouterLink to="/">Icon</RouterLink>
+    <!-- 导航到按钮页面的链接，显示文字为"Button" -->
+    <RouterLink to="/button">Button</RouterLink>
+    <!-- 导航到卡片页面的链接，显示文字为"Card" -->
+    <RouterLink to="/card">Card</RouterLink>
+    <!-- 导航到对话框页面的链接，显示文字为"Dialog" -->
+    <RouterLink to="/dialog">Dialog</RouterLink>
+    <!-- 导航到分页器页面的链接，显示文字为"Pager" -->
+    <RouterLink to="/pager">Pager</RouterLink>
+    <!-- 导航到折叠面板页面的链接，显示文字为"Collapse" -->
+    <RouterLink to="/collapse">Collapse</RouterLink>
+    <!-- 导航到工具提示页面的链接，显示文字为"Tooltip" -->
+    <RouterLink to="/tooltip">Tooltip</RouterLink>
+    <!-- 导航到下拉菜单页面的链接，显示文字为"DropDown" -->
+    <RouterLink to="/dropdown">DropDown</RouterLink>
+  </nav>
+  <div class="displayArea">
+    <RouterView />
+  </div>
 </template>
 
-<style scoped>
-header {
-  line-height: 1.5;
-  max-height: 100vh;
-}
-
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
-nav {
-  width: 100%;
-  font-size: 12px;
+<style lang="scss" scoped>
+h1.title {
   text-align: center;
-  margin-top: 2rem;
+  // margin-top: 5em;
+  font-weight: 200;
 }
 
-nav a.router-link-exact-active {
-  color: var(--color-text);
+.nav {
+  display: flex;
+  height: 50px;
+  justify-content: space-evenly;
+  align-items: center;
 }
 
-nav a.router-link-exact-active:hover {
-  background-color: transparent;
+.displayArea {
+  margin-top: 2em;
 }
 
-nav a {
-  display: inline-block;
-  padding: 0 1rem;
-  border-left: 1px solid var(--color-border);
-}
-
-nav a:first-of-type {
-  border: 0;
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-
-  nav {
-    text-align: left;
-    margin-left: -1rem;
-    font-size: 1rem;
-
-    padding: 1rem 0;
-    margin-top: 1rem;
-  }
+.active {
+  border-bottom: 3px solid hsla(160, 100%, 37%, 1);
 }
 </style>

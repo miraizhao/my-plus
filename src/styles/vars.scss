@@ -1,0 +1,78 @@
+$colors: (
+  primary: #409eff,
+  success: #67c23a,
+  warning: #e6a23c,
+  danger: #f56c6c,
+  info: #909399
+);
+:root {
+  // 遍历$colors列表或映射
+  @each $var, $color in $colors {
+    // 为每个颜色生成一个CSS变量，变量名为--myplus--color--颜色名，值为颜色值
+    --myplus--color--#{$var}: #{$color};
+    // 为每个颜色生成四个淡色版本的CSS变量，淡色程度依次为30%、50%、70%、90%
+    @for $i from 1 through 4 {
+      --myplus--color--#{$var}-light-#{2 * $i + 1}: #{mix(#fff, $color, ((2 * $i + 1) * 10%))};
+    }
+    // 为每个颜色生成一个淡色程度为80%的CSS变量
+    --myplus--color--#{$var}-light-8: #{mix(#fff, $color, 80%)};
+    // 为每个颜色生成一个深色程度为20%的CSS变量
+    --myplus--color--#{$var}-dark: #{mix(#000, $color, 20%)};
+  }
+
+  // 接下来，还有一些其他的颜色变量
+  // 对应的是 ElementUI 里面的中性色
+  --myplus-color-white: #fff;
+  --myplus-color-black: #000;
+  --myplus-bg-color: #ffffff;
+  --myplus-bg-color-page: #f2f3f5;
+  --myplus-bg-color-overlay: #ffffff;
+  --myplus-text-color-primary: #303133;
+  --myplus-text-color-regular: #606266;
+  --myplus-text-color-secondary: #909399;
+  --myplus-text-color-placeholder: #a8abb2;
+  --myplus-text-color-disabled: #c0c4cc;
+  --myplus-border-color: #dcdfe6;
+  --myplus-border-color-light: #e4e7ed;
+  --myplus-border-color-lighter: #ebeef5;
+  --myplus-border-color-extra-light: #f2f6fc;
+  --myplus-border-color-dark: #d4d7de;
+  --myplus-border-color-darker: #cdd0d6;
+  --myplus-fill-color: #f0f2f5;
+  --myplus-fill-color-light: #f5f7fa;
+  --myplus-fill-color-lighter: #fafafa;
+  --myplus-fill-color-extra-light: #fafcff;
+  --myplus-fill-color-dark: #ebedf0;
+  --myplus-fill-color-darker: #e6e8eb;
+  --myplus-fill-color-blank: #ffffff;
+
+  // 和 border 相关的变量
+  --myplus-border-width: 1px;
+  --myplus-border-style: solid;
+  --myplus-border-color-hover: var(--myplus-text-color-disabled);
+  --myplus-border: var(--myplus-border-width) var(--myplus-border-style) var(--myplus-border-color);
+  --myplus-border-radius-base: 4px;
+  --myplus-border-radius-small: 2px;
+  --myplus-border-radius-round: 20px;
+  --myplus-border-radius-circle: 100%;
+
+  // 和 font 相关的变量
+  --myplus-font-size-extra-large: 20px;
+  --myplus-font-size-large: 18px;
+  --myplus-font-size-medium: 16px;
+  --myplus-font-size-base: 14px;
+  --myplus-font-size-small: 13px;
+  --myplus-font-size-extra-small: 12px;
+  --myplus-font-family: 'Helvetica Neue', Helvetica, 'PingFang SC', 'Hiragino Sans GB',
+    'Microsoft YaHei', '\5fae\8f6f\96c5\9ed1', Arial, sans-serif;
+  --myplus-font-weight-primary: 500;
+
+  // 和 disabled 相关的变量
+  --myplus-disabled-bg-color: var(--myplus-fill-color-light);
+  --myplus-disabled-text-color: var(--myplus-text-color-placeholder);
+  --myplus-disabled-border-color: var(--myplus-border-color-light);
+
+  // 和 transition 过渡相关的变量
+  --myplus-transition-duration: 0.3s;
+  --myplus-transition-duration-fast: 0.2s;
+}
