@@ -1,28 +1,20 @@
 <template>
-  <i class="my-icon">
-    <font-awesome-icon v-bind="filiterProps" />
+  <i class="my-icon" :class="{ [`my-icon--${type}`]: type }">
+    <FontAwesomeIcon v-bind="filiterProps" />
   </i>
 </template>
 
 <script setup lang="ts">
-import { omit } from 'radash';
-import { computed } from 'vue';
 defineOptions({
   name: "MyIcon"
 })
-interface Props {
+import { omit } from 'radash';
+import { computed } from 'vue';
+import { type FontAwesomeIconProps } from '@fortawesome/vue-fontawesome';
+
+interface Props extends FontAwesomeIconProps {
   icon: string,
-  size?: string,
-  rotation?: number | string,
-  flip?: string,
-  beat?: boolean,
-  "beat-fade"?: boolean,
-  bounce?: boolean,
-  fade?: boolean,
-  spin?: boolean,
-  "spin-reverse"?: boolean,
-  "spin-pulse"?: boolean,
-  type?: string,
+  type?: "primary" | "info" | "success" | "warning" | "danger",
   color?: string,
 }
 const prpos = defineProps<Props>()
@@ -41,5 +33,11 @@ const filiterProps = computed(() => omit(prpos, ['type']))
   fill: currentColor;
   color: var(--my-icon-color);
   font-size: inherit;
+}
+
+@each $val in primary, info, success, warning, danger {
+  .my-icon--#{$val} {
+    --my-icon-color: var(--myplus--color--#{$val});
+  }
 }
 </style>
