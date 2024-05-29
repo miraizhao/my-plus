@@ -33,7 +33,7 @@
         <MyIcon flip="vertical" icon="gear" />
         <MyIcon rotation="180" icon="barcode" />
         <MyIcon rotation="90" icon="folder" />
-        <MyIcon icon="folder-open" />
+        <MyIcon :beat="true" icon="folder-open" />
     </div>
 </template>
 
